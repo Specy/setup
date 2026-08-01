@@ -1,0 +1,79 @@
+{
+  "_comment": [
+    "Copy to config.json and edit. config.json is gitignored - it is your machine,",
+    "not the design. Every script reads this file; nothing else should hardcode a",
+    "username, a repository, or machine sizing.",
+    "",
+    "The three-zone split is the opinionated default. Rename them if you like, but",
+    "read decisions/0001 before collapsing or adding zones - the boundary is the",
+    "point, and 'external' existing at all is most of the value."
+  ],
+
+  "windowsUser": "REPLACE_WITH_YOUR_WINDOWS_USERNAME",
+
+  "git": {
+    "name": "Your Name",
+    "email": "you@example.com"
+  },
+
+  "image": "Ubuntu-26.04",
+  "installRoot": "C:\\wsl",
+
+  "wsl": {
+    "_comment": "null means derive from this machine. Set a number to pin it.",
+    "memoryGB": null,
+    "processors": null,
+    "swapGB": 8
+  },
+
+  "daily": {
+    "_comment": "Your existing general-purpose distro. Keeps /mnt/c, loses interop. Set to null to skip.",
+    "distro": "Ubuntu-26.04",
+    "user": "REPLACE_WITH_THE_EXISTING_USER_IN_THAT_DISTRO",
+    "uid": 1000
+  },
+
+  "zones": [
+    {
+      "_comment": "uid MUST be unique across every distro including daily - see decisions/0016.",
+      "name": "work",
+      "uid": 1001,
+      "user": "dev",
+      "docker": true,
+      "rust": false,
+      "github": true,
+      "portRange": "3000-3999",
+      "repos": []
+    },
+    {
+      "name": "personal",
+      "uid": 1002,
+      "user": "dev",
+      "docker": false,
+      "rust": false,
+      "github": true,
+      "portRange": "4000-4999",
+      "repos": []
+    },
+    {
+      "_comment": "Holds no credentials on purpose. github:false is asserted by verify.sh.",
+      "name": "external",
+      "uid": 1003,
+      "user": "dev",
+      "docker": false,
+      "rust": false,
+      "github": false,
+      "portRange": "5000-5999",
+      "repos": []
+    }
+  ],
+
+  "_reposFormat": [
+    "Each entry is either \"owner/name\", or an object when the local directory",
+    "should differ from the repository name, or when it must be cloned without",
+    "credentials (required for the external zone, which has no gh login):",
+    "  \"owner/name\"",
+    "  { \"remote\": \"owner/name\", \"dir\": \"local-name\" }",
+    "  { \"remote\": \"owner/name\", \"anonymous\": true }"
+  ]
+}

@@ -1,0 +1,25 @@
+# Deploy to: ~/.config/mise/config.toml
+#
+# Global runtime baseline for a zone. Per-project versions belong in a mise.toml
+# inside the project, which overrides this on cd.
+#
+# See decisions/0011-toolchain-management.md.
+#
+# NOTE ON TRUST: a mise.toml inside a cloned repository is executable configuration
+# - it can define environment variables and tasks. mise refuses to honour a
+# directory's config until you run `mise trust` there, and that prompt is a real
+# supply-chain control, not a nag. Do not approve it reflexively, and especially not
+# in the external zone, where the code is untrusted by definition. Never add project
+# paths to `trusted_config_paths` to make the prompt go away.
+
+[tools]
+# Node is pinned to the major version, not "lts". Both resolve to 24 today, but "lts"
+# silently follows the LTS pointer to 26 whenever that lands - a major runtime bump
+# arriving on the next `mise install` rather than when you choose it.
+# Patch and minor updates still flow.
+node = "24"
+
+# uv is a self-contained tool rather than a project runtime, so tracking latest is
+# fine. Projects that care pin their own versions in a per-project mise.toml, which
+# overrides this on cd.
+uv = "latest"

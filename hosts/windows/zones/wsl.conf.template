@@ -1,0 +1,33 @@
+# Rendered by create-zone.ps1 and written to /etc/wsl.conf inside a dev zone.
+# {{HOSTNAME}} and {{USER}} are substituted from config.json.
+#
+# ASCII only - this is parsed by Windows-side tooling.
+# Apply changes with:  wsl --terminate <distro>
+#
+# Read decisions/0002-wsl-conf-hardening.md before changing anything here.
+
+[boot]
+systemd = true
+
+[automount]
+# No /mnt/c. This is the control that makes the isolation real: without it, any
+# postinstall script or agent can read the whole Windows user profile with the
+# Windows user's permissions.
+enabled = false
+
+[interop]
+# A distro that can execute wsl.exe can read EVERY other distro's filesystem with
+# no password. Disabling interop closes the zone-to-zone pivot, not just the
+# Windows-facing one.
+enabled = false
+
+# Also keeps npm.cmd / git.exe / python.exe off PATH, so agents use Linux tools
+# by construction rather than by instruction.
+appendWindowsPath = false
+
+[network]
+hostname = {{HOSTNAME}}
+generateResolvConf = true
+
+[user]
+default = {{USER}}

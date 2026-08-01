@@ -1,0 +1,28 @@
+{
+  "$comment": [
+    "Deployed to ~/.claude/settings.json by env/bootstrap.sh.",
+    "Defence in depth against prompt injection from repository content: an agent",
+    "reading a hostile README or issue should not be able to read credentials it has",
+    "no reason to touch. See decisions/0008-agent-execution-boundary.md.",
+    "",
+    "This is a backstop, not the boundary. The boundary is the zone: separate",
+    "filesystem, separate credentials, and no access to C:\\ or to other zones."
+  ],
+  "permissions": {
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.npmrc)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/id_rsa*)",
+      "Read(**/id_ed25519*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Bash(gh auth token:*)",
+      "Bash(cat ~/.config/gh/hosts.yml:*)"
+    ]
+  }
+}

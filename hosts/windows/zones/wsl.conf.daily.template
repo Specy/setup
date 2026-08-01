@@ -1,0 +1,35 @@
+# Rendered by harden-daily.ps1 and written to /etc/wsl.conf in the general-purpose
+# distro - the one you keep for tinkering, not for project work.
+# {{HOSTNAME}} and {{USER}} are substituted from config.json.
+#
+# ASCII only. Apply with:  wsl --terminate <distro>
+
+[boot]
+systemd = true
+
+[automount]
+# UNLIKE the dev zones: /mnt/c stays. The point of this distro is being a usable
+# Linux box alongside Windows, and it holds no project credentials.
+enabled = true
+options = "metadata,umask=22,fmask=11"
+
+[interop]
+# Still disabled, and this is the important line in this file.
+#
+# With automount on, /mnt/c/Windows/System32/wsl.exe is reachable, and
+#   wsl.exe -d dev-work cat /home/dev/.ssh/...
+# runs as the default user in the target distro with no password. Leaving interop
+# enabled here would let the least-hardened distro read the most-hardened one.
+#
+# Cost: no explorer.exe / clip.exe / launching a Windows browser from this shell.
+enabled = false
+appendWindowsPath = false
+
+[network]
+hostname = {{HOSTNAME}}
+generateResolvConf = true
+
+[user]
+# NOT optional. Omitting this block does not preserve the distro's existing
+# default user - it drops it, and WSL then logs you in as root.
+default = {{USER}}

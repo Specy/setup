@@ -1,0 +1,18 @@
+# Deploy to: ~/.npmrc
+# See decisions/0005-npm-ignore-scripts.md
+
+# Block install-time code execution. Every significant npm compromise of the last year
+# ran through preinstall/install/postinstall hooks.
+#
+# Packages needing a native build will fail until explicitly allowed:
+#     npm rebuild esbuild
+# Typically 3-5 packages per project, once. The friction is the point: it makes visible
+# exactly which dependencies want to execute code on your machine.
+ignore-scripts=true
+
+# Pin exact versions rather than accepting a caret range. A compromised patch release
+# then requires a deliberate update rather than arriving on the next install.
+save-exact=true
+
+# Noise.
+fund=false

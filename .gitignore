@@ -1,0 +1,26 @@
+# Your machine, not the design. Copy config.example.json and edit.
+config.json
+
+# Secrets never belong here, but belt and braces.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+id_ed25519*
+id_rsa*
+*.ppk
+
+# Local-only overrides, intentionally untracked.
+*.local
+*.local.*
+local/
+
+# Exports and snapshots are large and machine-specific.
+*.tar
+*.vhdx
+
+# OS noise.
+Thumbs.db
+desktop.ini
+.DS_Store

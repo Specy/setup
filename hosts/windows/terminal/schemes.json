@@ -1,0 +1,50 @@
+[
+  {
+    "name": "zone-daily",
+    "background": "#1C1C1C",
+    "foreground": "#DCDFE4",
+    "cursorColor": "#A0A6B0",
+    "selectionBackground": "#3A3F4B",
+    "black": "#282C34", "red": "#E06C75", "green": "#98C379", "yellow": "#E5C07B",
+    "blue": "#61AFEF", "purple": "#C678DD", "cyan": "#56B6C2", "white": "#DCDFE4",
+    "brightBlack": "#5A6374", "brightRed": "#E06C75", "brightGreen": "#98C379",
+    "brightYellow": "#E5C07B", "brightBlue": "#61AFEF", "brightPurple": "#C678DD",
+    "brightCyan": "#56B6C2", "brightWhite": "#FFFFFF"
+  },
+  {
+    "name": "zone-work",
+    "background": "#0D1B2A",
+    "foreground": "#DCE3EA",
+    "cursorColor": "#4C9AFF",
+    "selectionBackground": "#274B6D",
+    "black": "#1B2A3A", "red": "#E06C75", "green": "#98C379", "yellow": "#E5C07B",
+    "blue": "#61AFEF", "purple": "#C678DD", "cyan": "#56B6C2", "white": "#DCE3EA",
+    "brightBlack": "#5A6C80", "brightRed": "#E06C75", "brightGreen": "#98C379",
+    "brightYellow": "#E5C07B", "brightBlue": "#7FC1FF", "brightPurple": "#C678DD",
+    "brightCyan": "#56B6C2", "brightWhite": "#FFFFFF"
+  },
+  {
+    "name": "zone-personal",
+    "background": "#0E1F14",
+    "foreground": "#DCE6DD",
+    "cursorColor": "#5FD68A",
+    "selectionBackground": "#2A4D36",
+    "black": "#16291C", "red": "#E06C75", "green": "#98C379", "yellow": "#E5C07B",
+    "blue": "#61AFEF", "purple": "#C678DD", "cyan": "#56B6C2", "white": "#DCE6DD",
+    "brightBlack": "#5C7565", "brightRed": "#E06C75", "brightGreen": "#B5DE9A",
+    "brightYellow": "#E5C07B", "brightBlue": "#61AFEF", "brightPurple": "#C678DD",
+    "brightCyan": "#56B6C2", "brightWhite": "#FFFFFF"
+  },
+  {
+    "name": "zone-external",
+    "background": "#2A0E0E",
+    "foreground": "#F0DCDC",
+    "cursorColor": "#FF6B6B",
+    "selectionBackground": "#5E2626",
+    "black": "#3A1717", "red": "#FF7A7A", "green": "#98C379", "yellow": "#E5C07B",
+    "blue": "#61AFEF", "purple": "#C678DD", "cyan": "#56B6C2", "white": "#F0DCDC",
+    "brightBlack": "#8A5A5A", "brightRed": "#FF9A9A", "brightGreen": "#98C379",
+    "brightYellow": "#E5C07B", "brightBlue": "#61AFEF", "brightPurple": "#C678DD",
+    "brightCyan": "#56B6C2", "brightWhite": "#FFFFFF"
+  }
+]

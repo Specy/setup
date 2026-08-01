@@ -1,0 +1,47 @@
+# Deploy to: ~/.gitconfig  (identity is appended per zone — see below)
+#
+# Identity is NOT set here. Each zone sets its own user.email so a compromise in one
+# zone yields nothing usable in another, and so work commits cannot be made with a
+# personal address by accident. See decisions/0006-credential-placement.md.
+#
+#     git config --global user.name  "..."
+#     git config --global user.email "..."
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[fetch]
+	prune = true
+	# Verify object integrity on fetch. Rejects malformed or tampered objects rather
+	# than writing them into the local repository.
+	fsckobjects = true
+
+[transfer]
+	fsckobjects = true
+
+[receive]
+	fsckObjects = true
+
+[core]
+	# Code lives on ext4 and is edited from Linux. Never rewrite line endings.
+	# See decisions/0007-code-on-ext4.md.
+	autocrlf = false
+	eol = lf
+
+[diff]
+	colorMoved = zebra
+
+[rerere]
+	enabled = true
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate
