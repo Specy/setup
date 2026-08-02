@@ -96,8 +96,39 @@ Keeping to those two means you can pull updates to this repo later without fight
 conflicts, and anything genuinely useful you build can go back upstream without your
 personal details tagging along.
 
-If you want your own instance tracked in git, keep it in a private repo with this one as a
-submodule. The scripts work either way.
+### Keeping your instance in git
+
+If you want your setup tracked and reproducible, put it in a private repo with this one as
+a submodule:
+
+```
+my-setup/
+  setup/          this repo, as a submodule
+  config.json
+  overrides/
+```
+
+```bash
+git init my-setup && cd my-setup
+git submodule add https://github.com/Specy/setup.git setup
+cp setup/config.example.json config.json
+```
+
+The scripts look for `config.json` and `overrides/` next to the template or one level above
+it, so both layouts work with no extra arguments.
+
+Two settings make this comfortable:
+
+```bash
+git config push.recurseSubmodules on-demand
+git config -f .gitmodules submodule.setup.branch main
+```
+
+The first stops you pushing a commit that points at a template version nobody else can
+fetch. The second lets `git submodule update --remote` pull template updates.
+
+To update: pull inside `setup/`, then commit the submodule in the parent. That commit is a
+record of which version your machine is running.
 
 ## Day to day
 
